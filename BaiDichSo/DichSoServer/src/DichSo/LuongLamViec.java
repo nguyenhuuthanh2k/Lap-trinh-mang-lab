@@ -2,11 +2,11 @@ package DichSo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.ServerSocket;
 import java.net.Socket;
 
 public class LuongLamViec extends Thread {
@@ -26,13 +26,11 @@ public class LuongLamViec extends Thread {
 	}
 
 
-
 	@Override
 	public void run() {
 		try {
 			System.out.print(socketClient.getInetAddress().getHostAddress());
 			System.out.print(id);
-			
 			OutputStream osToClient = socketClient.getOutputStream();	
 			OutputStreamWriter write2Client = new OutputStreamWriter(osToClient);
 			BufferedWriter buffW = new BufferedWriter(write2Client);
@@ -40,40 +38,61 @@ public class LuongLamViec extends Thread {
 			InputStream in = socketClient.getInputStream();
 			InputStreamReader inReader = new InputStreamReader(in);
 			BufferedReader buffR = new BufferedReader(inReader);
-			while(true) {
 				
-			//moi nhap 1 so (0-9)
-				//String chuoimoinhap_gui = "Mời nhập 1 so tu (0-9)";
-				//buffwrite.write(chuoimoinhapa_gui + "\n");
-				//buffwrite.flush();
+			while(true){
+				String chuoiNhan=buffR.readLine();
+				System.out.print(chuoiNhan);
 				
-			//nhan cau tra loi
-				//String chuoimoinhan_nhan = buffRead.readLine();
+				if(chuoiNhan.equals("0")) {
+					String chuoiGui= "zero";
+					buffW.write(chuoiGui+"");
+					buffW.flush();
+				}else if(chuoiNhan.equals("1")) {
+					String chuoiGui= "one";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("2")) {
+					String chuoiGui= "two";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("3")) {
+					String chuoiGui= "three";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("4")) {
+					String chuoiGui= "four";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("5")) {
+					String chuoiGui= "five";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("6")) {
+					String chuoiGui= "six";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("7")) {
+					String chuoiGui= "seven";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("8")) {
+					String chuoiGui= "eight";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("9")) {
+					String chuoiGui= "night";
+					buffW.write(chuoiGui+"\n");
+					buffW.flush();
+				}else if(chuoiNhan.equals("10")) {
+					break;
+				}
 				
-				
-				
-			String chuoiNhan = buffR.readLine();
-			int i = Integer.parseInt(chuoiNhan);
-			//xu li
-			switch(i) {
-				case 0: chuoiNhan="Zero"; break;
-				case 1: chuoiNhan="Zero"; break;
-				case 2: chuoiNhan="Zero"; break;
-				case 3: chuoiNhan="Zero"; break;
-				case 4: chuoiNhan="Zero"; break;
-				case 5: chuoiNhan="Zero"; break;
-				case 6: chuoiNhan="Zero"; break;
-				case 7: chuoiNhan="Zero"; break;
-				case 8: chuoiNhan="Zero"; break;
-				case 9: chuoiNhan="Zero"; break;
-				case 10: break;
 			}
-			buffW.flush();
-			}
-
-		} catch (Exception e) {
+			socketClient.close();
+				}
+		catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}
-	
-}
+	}
 	}
