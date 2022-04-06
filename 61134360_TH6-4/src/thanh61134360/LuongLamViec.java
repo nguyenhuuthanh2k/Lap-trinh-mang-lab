@@ -69,6 +69,8 @@ public class LuongLamViec extends Thread{
 					guifile("C:\\9.txt");
 				}else if(chuoiNhan.equals("10")) {
 					guifile("C:\\10.txt");
+				}else if(chuoiNhan.equals("0")) {
+					break;
 				}
 			}
 			
